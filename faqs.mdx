@@ -1,0 +1,35 @@
+---
+title: "Frequently Asked Questions (FAQs)"
+description: "Get quick answers to common questions about our proxy service, security features, usage limits, and setup guidance."
+---
+
+<AccordionGroup>
+  <Accordion title="Will Kyvic slow down my website?">
+    No. Our security checks run on a highly optimized global edge network. For most users, the difference in latency is negligible and often imperceptible. We strongly recommend using the "DNS Only" setting for your CNAME record to ensure the fastest possible connection.
+  </Accordion>
+  <Accordion title="How do I know if Kyvic is working?">
+    The easiest way is to try and access your site from a new private Browse window, you may be presented with a challenge. Over time, you should also notice a significant drop in spam comments, junk form submissions, and suspicious traffic in your server logs.
+  </Accordion>
+  <Accordion title="What happens if my own server goes down?">
+    Kyvic protects your site, but it can't serve your content if your origin server is offline. Visitors will see our captcha challenge, but after solving it, they will receive an error message since we cannot connect to your server.
+  </Accordion>
+  <Accordion title="Can I customize the look of the captcha page?">
+    Currently, we offer a standard, clean interface designed for clarity and speed. We are planning to introduce customization options for our business customers in the future.
+  </Accordion>
+  <Accordion title="Will this affect my website's SEO?">
+    No. Kyvic is designed to be **SEO-friendly**. Our system automatically identify legitimate search engine crawlers like Googlebot and Bingbot. These verified bots are allowed to access and index your site's content without ever seeing a captcha, ensuring your SEO is not harmed. All other suspicious and unidentified bots (especially AI ones) are challenged, protecting your site while maintaining your search ranking.
+  </Accordion>
+  <Accordion title="Do you store my visitors' personal data?">
+    No. Kyvic is a **privacy-first** service. We act as a pass-through security gateway and do not store your website's content or any sensitive personal information from your visitors. All traffic is processed in real-time to perform security checks and is not permanently logged or stored.
+
+    Please read more about this in our [Privacy Policy](https://kyvic.com/privacy-policy).
+  </Accordion>
+  <Accordion title="My site's images or styles look broken. What should I do?">
+    This almost always happens when your website uses multiple subdomains for assets (e.g., `cdn.example.com` or `assets.example.com`). Please ensure you have added **every subdomain** to your Kyvic Console and configured its DNS record correctly. This is the most common setup issue.
+  </Accordion>
+  <Accordion title="What happens if I exceed my plan's usage limit?">
+    When your account reaches **85%** of your plan's traffic limit, a notification will appear in your Kyvic Console.
+
+    To avoid service interruption, you must upgrade to a higher tier before your usage exceeds 100%. If your usage surpasses the limit, your service will be automatically suspended for the remainder of the billing cycle, as outlined in our [Terms and Conditions.](https://kyvic.com/terms-and-conditions)
+  </Accordion>
+</AccordionGroup>

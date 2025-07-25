@@ -1,75 +1,72 @@
 ---
-title: "Quickstart"
-description: "Start building awesome documentation in minutes"
+title: "Getting Started: Your 3-Step Setup"
+description: "Follow these steps to protect your compatible website. The entire process typically takes less than 10 minutes."
 ---
-
-## Getting Started: Your 3-Step Setup
-
-Follow these steps to protect your compatible website. The entire process typically takes less than 10 minutes.
 
 <Steps>
-  <Step title="New Step">
-    ### Step 1: Add Your Domain to Kyvic
+  <Step title="Step 1: Add Your Domain to Kyvic" titleSize="h2">
+    In your Kyvic Console, add the domain or subdomain you want to protect (e.g., `www.example.com`). Our system will then provide you with the necessary DNS records for the next step.
+  </Step>
+  <Step title="Step 2: Configure Your DNS" titleSize="h2">
+    This is the most important step. You'll be pointing your domain's traffic to the Kyvic Shield network. Log in to your domain registrar or DNS provider (e.g., Cloudflare, GoDaddy, Namecheap) to make these changes.
 
-    In your Kyvic dashboard, add the domain or subdomain you want to protect (e.g., `www.your-awesome-site.com`). Our system will then provide you with the necessary DNS records for the next step.
+    <Accordion title="Option A: For Subdomains (Recommended)" defaultOpen="false" icon="globe">
+      This is the most common setup, used for domains like `www.example.com`.
+
+      1. Find or add a DNS record for your subdomain (e.g., `www`).
+      2. Change its type to `CNAME`.
+      3. Set the value (or "target") to: `aegis.kyvic.com`
+
+      <Note>
+        **Important:**
+
+        If you're using a service like Cloudflare for your DNS, make sure the proxy status is set to "DNS Only" (grey cloud). This ensures the best performance.
+      </Note>
+    </Accordion>
+    <Accordion title="Option B: For Apex/Root Domains" icon="globe-pointer">
+      This applies if you want to protect your root domain (e.g., `example.com`).
+
+      - **If your provider supports CNAME Flattening:** Some providers, like Cloudflare, allow you to set a `CNAME` record on your root domain. If so, follow the same steps as Option A for your root (`@`) record.
+      - **If your provider does NOT support CNAME Flattening:** This is very common. The industry-standard solution is to set up a simple redirect.
+        1. Set up Kyvic for your `www` subdomain as described in **Option A**.
+        2. Create a rule in your registrar to **redirect** all traffic from the root domain (`example.com`) to your protected subdomain (`www.example.com`).
+    </Accordion>
+  </Step>
+  <Step title="Step 3: Activate Your SSL Certificate" titleSize="h2">
+    To keep your site secure with HTTPS, we need to verify your domain ownership.
+
+    1. In your Kyvic dashboard, you'll see one or two `TXT` records with names like `_acme-challenge`.
+    2. Copy these records and add them to your DNS provider. This is a one-time verification step.
+    3. Once added, our system will automatically detect them and issue a free SSL certificate for your domain. This can take a up to 48 hours to complete, but is usually done within few minutes.
+  </Step>
+  <Step title="Step 4: Use Relative Paths for All Internal Resources" stepNumber={4} titleSize="h2">
+    For the best compatibility, ensure all paths to your own resources—including links, images, stylesheets, scripts, and API calls, use **relative paths** starting with a `/`.
+
+    Using absolute paths (with your full domain) can cause assets to break when proxied through our service.
+
+    #### **HTML**
+
+    - ✅ **Good:** `<a href="/about-us">`
+    - ❌ **Bad:** `<a href="https://your-site.com/about-us">`
+
+    #### **CSS**
+
+    This applies to `@import` rules and `url()` functions for fonts or background images.
+
+    - ✅ **Good:** `body { background-image: url('/images/background.jpg'); }`
+    - ❌ **Bad:** `body { background-image: url('https://your-site.com/images/background.jpg'); }`
+
+    #### **JavaScript & API Calls**
+
+    This is critical for Single Page Applications (SPAs).
+
+    - ✅ **Good:** `fetch('/api/data');`
+    - ❌ **Bad:** `fetch('https://your-site.com/api/data');`
+  </Step>
+  <Step title="That's it! Your are all set!" icon="party-horn" stepNumber={5} titleSize="h2">
+    
   </Step>
 </Steps>
-
-### Step 1: Add Your Domain to Kyvic
-
-In your Kyvic dashboard, add the domain or subdomain you want to protect (e.g., `www.your-awesome-site.com`). Our system will then provide you with the necessary DNS records for the next step.
-
-### Step 2: Configure Your DNS
-
-This is the most important step. You'll be pointing your domain's traffic to the Kyvic Shield network. Log in to your domain registrar or DNS provider (e.g., Cloudflare, GoDaddy, Namecheap) to make these changes.
-
-#### **Option A: For Subdomains (Recommended)**
-
-This is the most common setup, used for domains like `www.your-awesome-site.com`.
-
-1. Find the DNS record for your subdomain (e.g., `www`).
-2. Change its type to `CNAME`.
-3. Set the value (or "target") to: `shield.kyvic.com`
-4. **Important:** If you're using a service like Cloudflare for your DNS, make sure the proxy status is set to **"DNS Only"** (grey cloud). This ensures the best performance.
-
-#### **Option B: For Apex/Root Domains**
-
-This applies if you want to protect your bare domain (e.g., `your-awesome-site.com`).
-
-- **If your provider supports CNAME Flattening:** Some providers, like Cloudflare, allow you to set a `CNAME` record on your root domain. If so, follow the same steps as Option A for your root (`@`) record.
-- **If your provider does NOT support CNAME Flattening:** This is very common. The industry-standard solution is to set up a simple redirect.
-  1. Set up Kyvic for your `www` subdomain as described in **Option A**.
-  2. Create a rule in your registrar to **redirect** all traffic from the root domain (`your-awesome-site.com`) to your protected subdomain (`https://www.your-awesome-site.com`).
-
-### Step 3: Activate Your SSL Certificate
-
-To keep your site secure with HTTPS, we need to verify your domain ownership.
-
-1. In your Kyvic dashboard, you'll see one or two `TXT`**records**  with names like `_acme-challenge`.
-2. Copy these records and add them to your DNS provider. This is a one-time verification step.
-3. Once added, our system will automatically detect them and issue a free SSL certificate for your domain. This can take a few minutes to complete.
-
-**That's it\! Your site is now protected by Kyvic Shield.**
-
----
-
-## Frequently Asked Questions (FAQ)
-
-Will Kyvic slow down my website?
-
-No. Our security checks run on a highly optimized global edge network. For most users, the difference in latency is negligible and often imperceptible. We strongly recommend using the "DNS Only" setting for your CNAME record to ensure the fastest possible connection.
-
-How do I know if Kyvic is working?
-
-The easiest way is to try and access your site from a new private Browse window; you may be presented with a challenge. Over time, you should also notice a significant drop in spam comments, junk form submissions, and suspicious traffic in your server logs.
-
-What happens if my own server goes down?
-
-Kyvic Shield protects your site, but it can't serve your content if your origin server is offline. Visitors will see our captcha challenge, but after solving it, they will receive an error message since we cannot connect to your server.
-
-Can I customize the look of the captcha page?
-
-Currently, we offer a standard, clean interface designed for clarity and speed. We are planning to introduce customization options for our business customers in the future.
 
 ---
 
@@ -88,78 +85,3 @@ If you use a Web Application Firewall (WAF) on your origin server, you must whit
 ### Protecting Sites with Multiple Subdomains
 
 If your website loads assets (like images or scripts) from different subdomains (e.g., `www.yoursite.com` and `assets.yoursite.com`), you must add **each subdomain** to your Kyvic dashboard and configure a separate `CNAME` record for each one.
-
-## Get started in three steps
-
-Get your documentation site running locally and make your first customization.
-
-### Step 1: Set up your local environment
-
-<AccordionGroup>
-  <Accordion title="Clone your docs locally" icon="copy">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
-
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
-  </Accordion>
-  <Accordion title="Start the preview server" icon="rectangle-terminal">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live\!
-
-    <Tip>
-      Your preview updates automatically as you edit files.
-    </Tip>
-  </Accordion>
-</AccordionGroup>
-
-### Step 2: Deploy your changes
-
-<AccordionGroup>
-  <Accordion title="Install our GitHub app" icon="github">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
-
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-  </Accordion>
-  <Accordion title="Update your site name and colors" icon="palette">
-    For a first change, let's update the name and colors of your docs site.
-
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
-
-    <Tip>
-      Try changing the primary color to see an immediate difference\!
-    </Tip>
-  </Accordion>
-</AccordionGroup>
-
-### Step 3: Go live
-
-<Accordion title="Publish your docs" icon="rocket">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments\!
-</Accordion>
-
-## Next steps
-
-Now that you have your docs running, explore these key features:
-
-<CardGroup cols={2}>
-  <Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-    Learn MDX syntax and start writing your documentation.
-  </Card>
-  <Card title="Customize style" icon="palette" href="/essentials/settings">
-    Make your docs match your brand perfectly.
-  </Card>
-  <Card title="Add code examples" icon="square-code" href="/essentials/code">
-    Include syntax-highlighted code blocks.
-  </Card>
-  <Card title="API documentation" icon="code" href="/api-reference/introduction">
-    Auto-generate API docs from OpenAPI specs.
-  </Card>
-</CardGroup>
-
-<Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
-</Note>
