@@ -25,21 +25,37 @@ Kyvic is designed to be a universal layer of protection, but its CNAME-based met
 | **DRM-Protected Video/Media** (e.g., Netflix clones)    | ❌ **No**   | Our proxy interferes with the secure Digital Rights Management (DRM) path required for protected content. |
 | **Specialized Course Platforms** (Kajabi, Teachable)    | ❌ **No**   | These are managed platforms with similar restrictions to Wix and Shopify.                                 |
 
-> **A Note on Future Support:** We are actively exploring partnerships with major managed platforms to offer seamless, one-click integrations in the future. Stay tuned for announcements\!
+<Note>
+  **WebSocket Support:**
 
----
+  Our service includes experimental support for proxying real-time WebSocket connections. While it should be functional for many applications, we are continuing to enhance its reliability. If your site depends heavily on WebSockets, please consider this feature to be in a experimental phase.
+</Note>
+
+<Note>
+  **A Note on Future Support:**
+
+  We are actively exploring partnerships with major managed platforms to offer seamless, one-click integrations in the future. Stay tuned for announcements\!
+</Note>
 
 ## Key Features at a Glance
 
 By pointing your domain to Kyvic, you get more than just a captcha. You instantly upgrade your website's infrastructure.
 
-| Feature                              | Your Benefit                                                 | How It Works                                                                                                |
-| :----------------------------------- | :----------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------- |
-| **Neuro-Based Captcha**              | Stops automated scrapers, spammers, and malicious bots cold. | Our unique challenges require human logic that AI cannot yet replicate, filtering out non-human traffic.    |
-| **Enterprise-Grade DDoS Protection** | Your site stays online, even during a large-scale attack.    | Our network automatically detects and absorbs malicious traffic floods before they ever reach your server.  |
-| **Origin IP Masking**                | Prevents attackers from targeting your server directly.      | Your server's true IP address is hidden behind our network, making it an invisible target.                  |
-| **Global Edge Network**              | Fast load times for your visitors, wherever they are.        | Your captcha and security checks are served from a data center near your visitor, ensuring minimal latency. |
-| **Automatic SSL/TLS**                | Your site is secured with HTTPS, building visitor trust.     | We provision and renew a free SSL certificate for your custom domain automatically.                         |
+| Feature                 | Your Benefit                                                 | How It Works                                                                                                |
+| :---------------------- | :----------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------- |
+| **Neuro-Based Captcha** | Stops automated scrapers, spammers, and malicious bots cold. | Our unique challenges require human logic that AI cannot yet replicate, filtering out non-human traffic.    |
+| **DDoS Protection**     | Your site stays online, even during a large-scale attack.    | Our network automatically detects and absorbs malicious traffic floods before they ever reach your server.  |
+| **Origin IP Masking**   | Prevents attackers from targeting your server directly.      | Your server's true IP address is hidden behind our network, making it an invisible target.                  |
+| **Global Edge Network** | Fast load times for your visitors, wherever they are.        | Your captcha and security checks are served from a data center near your visitor, ensuring minimal latency. |
+| **Automatic SSL/TLS**   | Your site is secured with HTTPS, building visitor trust.     | We provision and renew a free SSL certificate for your custom domain automatically.                         |
+
+<Note>
+  **Note on DDoS Protection:**
+
+  Our reverse‑proxy infrastructure provides built‑in, always‑on mitigation for network and transport‑layer DDoS attacks (L3/4), including large-scale volumetric floods. This foundational protection helps keep your site online under high‑traffic conditions.
+
+  All traffic, whether benign, anomalous, or malicious, that passes through our network is counted toward your usage plan. For advanced application‑layer (L7) threats, such as automated HTTP flood attacks or stealthy bot traffic, we recommend a layered security approach. Protect your origin with your own WAF, and be sure to whitelist our IP ranges so that legitimate proxy traffic reaches your origin reliably.
+</Note>
 
 ---
 
