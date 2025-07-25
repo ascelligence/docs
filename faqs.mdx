@@ -16,8 +16,21 @@ description: "Get quick answers to common questions about our proxy service, sec
   <Accordion title="Can I customize the look of the captcha page?">
     Currently, we offer a standard, clean interface designed for clarity and speed. We are planning to introduce customization options for our business customers in the future.
   </Accordion>
-  <Accordion title="Will this affect my website's SEO?">
-    No. Kyvic is designed to be **SEO-friendly**. Our system automatically identify legitimate search engine crawlers like Googlebot and Bingbot. These verified bots are allowed to access and index your site's content without ever seeing a captcha, ensuring your SEO is not harmed. All other suspicious and unidentified bots (especially AI ones) are challenged, protecting your site while maintaining your search ranking.
+  <Accordion title="Will this affect my website's SEO in a negative way?">
+    Absolutely not. Protecting your site's SEO is a core principle of Kyvic. Our system leverages Cloudflare's powerful bot detection to intelligently analyze your traffic before it even reaches your site.
+
+    We have configured our system to automatically identify and grant access to verified bots that are beneficial to your site's visibility and operations. This includes bots in categories such as:
+
+    - **Search Engine Crawlers:** These bots index your site for search results. _(e.g., Googlebot, Bingbot, YandexBot, DuckDuckGo Bot)_
+    - **Search Engine Optimization (SEO):** These are tools you or your marketing team might use to analyze and improve your site's ranking and performance. _(e.g., Google Lighthouse, AhrefsBot, SemrushBot, Moz's Rogerbot, Screaming Frog)_
+    - **Advertising & Marketing:** These bots verify ad placements or generate link previews for social sharing. _(e.g., GoogleAdsBot, LinkedInBot, Pinterestbot)_
+    - **Essential Webhooks:** These are services that need to communicate with your site for critical functions like payment processing and automation. _(e.g., Stripe, Slackbot, Zapier)_
+
+    These trusted bots are always allowed to access and index your content without being challenged.
+
+    Conversely, Kyvic is designed to challenge suspicious and unwanted traffic. This specifically includes aggressive **AI data scrapers** that harvest your content for training models, as well as other unidentified, malicious, or non-essential bots.
+
+    The result is a website that is fully protected from harmful traffic while ensuring that the bots essential for your search ranking always have access.
   </Accordion>
   <Accordion title="Do you store my visitors' personal data?">
     No. Kyvic is a **privacy-first** service. We act as a pass-through security gateway and do not store your website's content or any sensitive personal information from your visitors. All traffic is processed in real-time to perform security checks and is not permanently logged or stored.
