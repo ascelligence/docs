@@ -39,15 +39,17 @@ Kyvic is designed to be a universal layer of protection, but its CNAME-based met
 
 ## Key Features at a Glance
 
-By pointing your domain to Kyvic, you get more than just a captcha. You instantly upgrade your website's infrastructure.
+By pointing your domain to Kyvic, you get more than just a next-gen captcha. You instantly upgrade your website's infrastructure.
 
-| Feature                 | Your Benefit                                                 | How It Works                                                                                                |
-| :---------------------- | :----------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------- |
-| **Neuro-Based Captcha** | Stops automated scrapers, spammers, and malicious bots cold. | Our unique challenges require human logic that AI cannot yet replicate, filtering out non-human traffic.    |
-| **DDoS Protection**     | Your site stays online, even during a large-scale attack.    | Our network automatically detects and absorbs malicious traffic floods before they ever reach your server.  |
-| **Origin IP Masking**   | Prevents attackers from targeting your server directly.      | Your server's true IP address is hidden behind our network, making it an invisible target.                  |
-| **Global Edge Network** | Fast load times for your visitors, wherever they are.        | Your captcha and security checks are served from a data center near your visitor, ensuring minimal latency. |
-| **Automatic SSL/TLS**   | Your site is secured with HTTPS, building visitor trust.     | We provision and renew a free SSL certificate for your custom domain automatically.                         |
+| Feature                          | Your Benefit                                                                                        | How It Works                                                                                                                                                         |
+| :------------------------------- | :-------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Neuro-Based Captcha** 🧠       | Stops automated scrapers, spammers, and malicious bots cold.                                        | Our unique challenges require human logic that AI cannot yet replicate, filtering out non-human traffic.                                                             |
+| **DDoS Protection** 🛡️          | Your site stays online, even during an attack.                                                      | Our network automatically detects and absorbs malicious traffic floods before they ever reach your server.                                                           |
+| **Origin IP Masking** 👻         | Prevents attackers from targeting your server directly.                                             | Your server's true IP address is hidden behind our network, making it an invisible target.                                                                           |
+| **Global Edge Network** 🌍       | Fast load times for your visitors, wherever they are.                                               | Your captcha and security checks are served from a data center near your visitor, ensuring minimal latency.                                                          |
+| **Edge Caching** ⚡️              | Faster site loads and reduced server costs.                                                         | We automatically cache static content (images, CSS, JS) at the edge. We honor your `Cache-Control` headers, or default to a 5-minute cache for faster repeat visits. |
+| **Automatic SSL/TLS** 🔒         | Your site is secured with HTTPS, building visitor trust.                                            | We provision and renew a free SSL certificate for your custom domain automatically.                                                                                  |
+| **Enhanced Security Headers** 🪖 | Improved protection against common web attacks like clickjacking, without any server configuration. | We automatically add best-practice security headers to every response from your website.                                                                             |
 
 <Note>
   **Note on DDoS Protection:**
@@ -56,8 +58,6 @@ By pointing your domain to Kyvic, you get more than just a captcha. You instantl
 
   All traffic, whether benign, anomalous, or malicious, that passes through our network is counted toward your usage plan. For advanced application‑layer (L7) threats, such as automated HTTP flood attacks or stealthy bot traffic, we recommend a layered security approach. Protect your origin with your own WAF, and be sure to whitelist our IP ranges so that legitimate proxy traffic reaches your origin reliably.
 </Note>
-
----
 
 ## Getting Started: Your 3-Step Setup
 
