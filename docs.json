@@ -1,11 +1,14 @@
 {
     "$schema": "https://mintlify.com/docs.json",
-    "theme": "mint",
+    "theme": "almond",
     "name": "Kyvic Docs",
     "colors": {
         "primary": "#00c1ed",
         "light": "#00d0ff",
         "dark": "#00b9e2"
+    },
+    "appearance": {
+      "default": "light"
     },
     "favicon": "/favicon.svg",
     "navigation": {
