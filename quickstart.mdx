@@ -1,11 +1,15 @@
 ---
-title: "Getting Started: 4-Step Setup"
+title: "Getting Started: 5-Step Setup"
 description: "Follow these steps to protect your compatible website. The entire process typically takes less than 10 minutes."
 ---
 
 <Steps>
   <Step title="Step 1: Add Your Domain to Kyvic" titleSize="h2">
-    In your Kyvic Console, add the domain or subdomain you want to protect (e.g., `www.example.com`). Our system will then provide you with the necessary DNS records for the next step.
+    In your Kyvic Console, add the domain or subdomain you want to protect (e.g., `www.example.com`).
+
+    When adding your domain, you must tell Kyvic where your server is located. Enter your origin server's IP address (e.g., `123.45.67.89`) or an existing hostname (e.g., `my-server.com`).
+
+    Our platform will then provide you with the necessary DNS records for the next step.
   </Step>
   <Step title="Step 2: Configure Your DNS" titleSize="h2">
     This is the most important step. You'll be pointing your domain's traffic to the Kyvic Shield network. Log in to your domain registrar or DNS provider (e.g., Cloudflare, GoDaddy, Namecheap) to make these changes.
@@ -63,7 +67,10 @@ description: "Follow these steps to protect your compatible website. The entire 
     - ✅ **Good:** `fetch('/api/data');`
     - ❌ **Bad:** `fetch('https://your-site.com/api/data');`
   </Step>
-  <Step title="That's it! Your are all set!" icon="party-horn" stepNumber={5} titleSize="h2">
+  <Step title="Step 5: Verifying Your Setup" stepNumber={5} titleSize="h2">
+    Once DNS propagation is complete, a "Protected" badge will appear next to your domain, confirming that your site is now protected against bots and AI crawlers.
+  </Step>
+  <Step title="That's it! Your are all set!" icon="party-horn" titleSize="h2">
     
   </Step>
 </Steps>
