@@ -7,7 +7,7 @@ description: "Follow these steps to protect your compatible website. The entire 
   <Step title="Step 1: Add Your Domain to Kyvic" titleSize="h2">
     In your **Kyvic Console**, go to **Services → Aegis → Protected Domains**, then add the domain or subdomain you want to protect (for example, `www.example.com`).
 
-    When adding your domain, you must tell Kyvic where your origin server is located. Enter your origin server's IP address (e.g., `123.45.67.89`) or an existing hostname (e.g., `my-server-origin.com`).
+    When adding your domain, you'll need to tell Kyvic where your website is hosted. Enter your **hosting IP address** (e.g., `123.45.67.89`) or an existing **hostname** (e.g., `my-server-hostname.com`). You can typically find this information in the dashboard of your provider, whether it's a traditional host (like **GoDaddy, Bluehost, or Namecheap**) or a cloud service (like **Vercel, Netlify, or AWS**).
 
     Our platform will then provide you with the necessary DNS records for the next step.
   </Step>
@@ -26,7 +26,7 @@ description: "Follow these steps to protect your compatible website. The entire 
       </Warning>
     </Accordion>
     <Accordion title="Option B: For Apex/Root Domains" icon="globe-pointer">
-      This applies if you want to protect your root domain (e.g., `example.com`).
+      This is for your "bare" domain, like `example.com`**(without the "www")** 
 
       - **If your provider supports CNAME Flattening:** Some providers, like Cloudflare, allow you to set a `CNAME` record on your root domain. If so, follow the same steps as \*\*Option A \*\*for your root (`@`) record.
       - **If your provider does NOT support CNAME Flattening:** This is very common. The industry-standard solution is to set up a simple redirect.
