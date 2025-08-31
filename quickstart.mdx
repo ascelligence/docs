@@ -5,14 +5,14 @@ description: "Follow these steps to protect your compatible website. The entire 
 
 <Steps>
   <Step title="Step 1: Add Your Domain to Kyvic" titleSize="h2">
-    In your Kyvic Console, add the domain or subdomain you want to protect (e.g., `www.example.com`).
+    In your **Kyvic Console**, go to **Services → Aegis → Protected Domains**, then add the domain or subdomain you want to protect (for example, `www.example.com`).
 
-    When adding your domain, you must tell Kyvic where your server is located. Enter your origin server's IP address (e.g., `123.45.67.89`) or an existing hostname (e.g., `my-server.com`).
+    When adding your domain, you must tell Kyvic where your origin server is located. Enter your origin server's IP address (e.g., `123.45.67.89`) or an existing hostname (e.g., `my-server-origin.com`).
 
     Our platform will then provide you with the necessary DNS records for the next step.
   </Step>
   <Step title="Step 2: Configure Your DNS" titleSize="h2">
-    This is the most important step. You'll be pointing your domain's traffic to the Kyvic Shield network. Log in to your domain registrar or DNS provider (e.g., Cloudflare, GoDaddy, Namecheap) to make these changes.
+    This is the most important step. You'll be pointing your domain's traffic to the Kyvic Aegis network. Log in to your domain registrar or DNS provider (e.g., Cloudflare, GoDaddy, Namecheap) to make these changes.
 
     <Accordion title="Option A: For Subdomains (Recommended)" defaultOpen="false" icon="globe">
       This is the most common setup, used for domains like `www.example.com`.
@@ -21,16 +21,14 @@ description: "Follow these steps to protect your compatible website. The entire 
       2. Change its type to `CNAME`.
       3. Set the value (or "target") to: `aegis.kyvic.com`
 
-      <Note>
-        **Important:**
-
-        If you're using a service like Cloudflare for your DNS, make sure the proxy status is set to "DNS Only" (grey cloud). This ensures the best performance.
-      </Note>
+      <Warning>
+        If you’re using a service like Cloudflare for your DNS, ensure that the proxy status is set to “DNS Only” (grey cloud). This ensures optimal performance for your site.
+      </Warning>
     </Accordion>
     <Accordion title="Option B: For Apex/Root Domains" icon="globe-pointer">
       This applies if you want to protect your root domain (e.g., `example.com`).
 
-      - **If your provider supports CNAME Flattening:** Some providers, like Cloudflare, allow you to set a `CNAME` record on your root domain. If so, follow the same steps as Option A for your root (`@`) record.
+      - **If your provider supports CNAME Flattening:** Some providers, like Cloudflare, allow you to set a `CNAME` record on your root domain. If so, follow the same steps as \*\*Option A \*\*for your root (`@`) record.
       - **If your provider does NOT support CNAME Flattening:** This is very common. The industry-standard solution is to set up a simple redirect.
         1. Set up Kyvic for your `www` subdomain as described in **Option A**.
         2. Create a rule in your registrar to **redirect** all traffic from the root domain (`example.com`) to your protected subdomain (`www.example.com`).
@@ -39,16 +37,16 @@ description: "Follow these steps to protect your compatible website. The entire 
   <Step title="Step 3: Activate Your SSL Certificate" titleSize="h2">
     To keep your site secure with HTTPS, we need to verify your domain ownership.
 
-    1. In your Kyvic dashboard, you'll see one or two `TXT` records with names like `_acme-challenge`.
-    2. Copy these records and add them to your DNS provider. This is a one-time verification step.
-    3. Once added, our system will automatically detect them and issue a free SSL certificate for your domain. This can take a up to 48 hours to complete, but is usually done within few minutes.
+    1. In your Kyvic Console, navigate through **Services → Aegis → Protected Domains → DNS Configuration**. On the **DNS Configuration** tab, you should see one or two TXT records with names such as `_acme-challenge`.
+    2. Copy these TXT records and add them to your DNS provider. This is a **one-time verification step** to confirm ownership of your domain.
+    3. Once you’ve added the records, our system will automatically detect them and issue a **free SSL certificate** for your domain. The certificate is **fully managed**, so you don’t need to worry about renewals or expiration.
   </Step>
-  <Step title="Step 4: Use Relative Paths for All Internal Resources" stepNumber={4} titleSize="h2">
-    For the best compatibility, ensure all paths to your own resources—including links, images, stylesheets, scripts, and API calls, use **relative paths** starting with a `/`.
+  <Step title="Step 4 (Recommended): Use Relative Paths for All Internal Resources" stepNumber={4} titleSize="h2">
+    For the best compatibility, we **strongly recommend** using **relative paths** for all your resources, including links, images, stylesheets, scripts, and API calls.
 
-    Using absolute paths (with your full domain) can cause assets to break when proxied through our service.
+    While our proxy is designed to handle absolute paths (those with your full domain), the process isn't perfect. Using them can cause assets to break when proxied through our service. To ensure everything loads correctly, please make sure all paths to your own resources start with a `/`.
 
-    #### **HTML**
+    #### **HTML / JSX**
 
     - ✅ **Good:** `<a href="/about-us">`
     - ❌ **Bad:** `<a href="https://your-site.com/about-us">`
@@ -68,10 +66,16 @@ description: "Follow these steps to protect your compatible website. The entire 
     - ❌ **Bad:** `fetch('https://your-site.com/api/data');`
   </Step>
   <Step title="Step 5: Verifying Your Setup" stepNumber={5} titleSize="h2">
-    Once DNS propagation is complete, a "Protected" badge will appear next to your domain, confirming that your site is now protected against bots and AI crawlers.
+    Once DNS propagation is complete, a **"Protected"** badge will appear next to your domain, showing that your site is now safeguarded against harmful bots and AI scrapers.
+
+    <Info>
+      Although the process can take up to 48 hours, it typically completes within a few minutes to a couple of hours.
+    </Info>
   </Step>
   <Step title="That's it! Your are all set!" icon="party-horn" titleSize="h2">
-    
+    <Check>
+      🥳 Congratulations, your website is now protected by Kyvic Aegis.
+    </Check>
   </Step>
 </Steps>
 
@@ -85,10 +89,10 @@ Most users won't need this section, but it's here for more complex setups.
 
 If you use a Web Application Firewall (WAF) on your origin server, you must whitelist our network IPs to prevent your WAF from blocking legitimate traffic.
 
-1. **Get Cloudflare's IPs:** The Kyvic network runs on Cloudflare. Get the official IP list from [cloudflare.com/ips](https://www.cloudflare.com/ips).
+1. **Get Cloudflare's IPs:** The Kyvic Aegis network runs on Cloudflare. Get the official IP list from [cloudflare.com/ips](https://www.cloudflare.com/ips).
 2. **Create an IP Set:** In your WAF provider's dashboard (like AWS WAF), create an "IP Set" containing all of Cloudflare's IP ranges.
 3. **Create an "Allow" Rule:** Add a rule to your WAF that **allows** any traffic coming from the Cloudflare IP Set. This rule should have the highest priority (e.g., run first).
 
 ### Protecting Sites with Multiple Subdomains
 
-If your website loads assets (like images or scripts) from different subdomains (e.g., `www.yoursite.com` and `assets.yoursite.com`), you must add **each subdomain** to your Kyvic dashboard and configure a separate `CNAME` record for each one.
+If your website loads assets (like images or scripts) from different subdomains (e.g., `www.yoursite.com` and `assets.yoursite.com`), you must add **each subdomain** to your Kyvic Console and configure a separate `CNAME` record for each one.
