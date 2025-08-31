@@ -3,44 +3,37 @@ title: "Introduction"
 description: "Welcome to Kyvic! You're taking a powerful step towards protecting your website from the growing noise of AI crawlers, scrapers, and malicious bots."
 ---
 
-Modern bots are smart, but they lack true consciousness and the nuanced logic of the human brain. Kyvic Aegis leverages this fundamental gap. Our neuro-based captchas are designed to be effortlessly solved by your human visitors while presenting an insurmountable logical barrier to automated systems. Think of it as a friendly handshake for humans and an unbreachable wall for bots.
+Modern bots are smart, but they lack the true consciousness and nuanced logic of the human brain. Kyvic Aegis leverages this fundamental gap. Our neuro-based illusions are designed to be effortlessly solved by your human visitors while presenting an insurmountable logical barrier to automated systems.
+
+Think of it as a friendly handshake for humans and an unbreachable wall for bots.
 
 ## Our Protection Model (Early Access)
 
-During our Early Access phase, Kyvic Aegis uses a time-based protection model. This means a quick neuro-based challenge is periodically shown to visitors to verify they are human. The timing of this check is unique to each individual user, not an event that happens to everyone at once.
+During the Early Access phase, Kyvic Aegis uses a time-based protection model. This means a quick neuro-based challenge is periodically shown to visitors to verify they are human. The timing of this check is unique to each individual user, not an event that happens to everyone at once.
 
-We chose this direct approach for our initial release for two key reasons:
+We use this direct approach for our initial release for two key reasons:
 
-1. **Maximum Effectiveness Against AI:** A periodic, mandatory check is the most reliable way to filter out the current generation of AI crawlers and automated scrapers. It ensures no bot can remain on your site undetected for an extended period.
+1. **Maximum Effectiveness Against AI:** Our primary neuro-based challenges are engineered to be a formidable barrier, making it extremely difficult for AI crawlers and scrapers to penetrate your site. However, since no security system can guarantee 100% infallibility, we've built in a powerful fail-safe. The periodic, mandatory check ensures that in the rare event a highly advanced bot manages to slip past our initial defenses, the threat is neutralized at the next checkpoint, preventing any malicious presence from lingering.
 2. **Reliability Over Complexity:** While more advanced behavioral analysis is on our roadmap, this time-based system is incredibly robust and predictable. It provides a strong, consistent security baseline for all our early users without the risk of errors that can come from more complex (and sometimes faulty) detection systems.
 
 ## Platform Compatibility
 
-Kyvic is designed to be a universal layer of protection, but its CNAME-based method requires that you have full control over your domain's DNS settings. Please review this table to see if your website is compatible.
+Kyvic operates as an edge reverse proxy, sitting between your visitors and your server. To set it up, you'll need the ability to modify your domain's **DNS records** (specifically, the CNAME and TXT records).
 
-| Platform / Website Type                                 | Supported? | Reason / Notes                                                                                            |
-| :------------------------------------------------------ | :--------- | :-------------------------------------------------------------------------------------------------------- |
-| **Self-Hosted Websites** (WordPress, Joomla, etc.)      | ✅ **Yes**  | You have full DNS control to point your CNAME record to Kyvic.                                            |
-| **Cloud Hosting** (AWS, Google Cloud, Azure)            | ✅ **Yes**  | Perfect for custom applications where you manage the infrastructure.                                      |
-| **VPS & Dedicated Servers** (DigitalOcean, Vultr)       | ✅ **Yes**  | Ideal use case. You have complete control over your domain and server.                                    |
-| **Developer Platforms** (Vercel, Netlify, Render)       | ✅ **Yes**  | These platforms provide the necessary custom domain controls.                                             |
-| **Most API & Mobile App Backends**                      | ✅ **Yes**  | As long as you control the API's custom domain, Kyvic can protect it.                                     |
-| **Managed E-commerce Platforms** (Shopify, BigCommerce) | ❌ **No**   | These platforms require your domain to point exclusively to their servers, creating a DNS conflict.       |
-| **Managed Website Builders** (Wix, Squarespace)         | ❌ **No**   | These are closed ecosystems that do not allow for this type of external proxying.                         |
-| **DRM-Protected Video/Media** (e.g., Netflix clones)    | ❌ **No**   | Our proxy interferes with the secure Digital Rights Management (DRM) path required for protected content. |
-| **Specialized Course Platforms** (Kajabi, Teachable)    | ❌ **No**   | These are managed platforms with similar restrictions to Wix and Shopify.                                 |
+Our service is ideal for websites operating on a **single domain** (e.g., `www.example.com`). It also fully supports sites that load resources from **multiple subdomains** (e.g., `assets.example.com`). Please be aware, some sites have strict browser security policies (like CORS or CSP) that control how resources are shared between domains. If you encounter issues with assets not loading, a minor configuration adjustment by your web developer may be needed.
 
-<Note>
-  **WebSocket Support:**
+For maximum security, we strongly recommend protecting any critical subdomains with Kyvic as well. This creates a comprehensive shield and prevents **origin IP/hostname exposure**, making it significantly harder for attackers to target your server directly.
 
-  Our service includes experimental support for proxying real-time WebSocket connections. While it should be functional for many applications, we are continuing to enhance its reliability. If your site depends heavily on WebSockets, please consider this feature to be in a experimental phase.
-</Note>
-
-<Note>
-  **A Note on Future Support:**
-
-  We are actively exploring partnerships with major managed platforms to offer seamless, one-click integrations in the future. Stay tuned for announcements\!
-</Note>
+| Platform / Website Type                                 | Supported?               | Reason / Notes                                                                                                      |
+| :------------------------------------------------------ | :----------------------- | :------------------------------------------------------------------------------------------------------------------ |
+| **Self-Hosted Websites** (WordPress, Joomla, etc.)      | ✅ **Yes**                | You have full DNS control to point your domain to Kyvic.                                                            |
+| **Cloud & VPS Hosting** (AWS, DigitalOcean, Vultr)      | ✅ **Yes**                | Ideal use case. You have complete control over your domain and server infrastructure.                               |
+| **Developer Platforms** (Vercel, Netlify, Render)       | ✅ **Yes**                | These platforms are designed for custom domain control and work seamlessly.                                         |
+| **Managed Website Builders** (Wix, Squarespace)         | ✅ **Yes**                | Works on paid plans that allow custom domain CNAME records, bypassing platform restrictions.                        |
+| **Managed E-commerce Platforms** (Shopify, BigCommerce) | ✅ **Yes**                | Requires a plan that supports custom domains. Our proxy is fully compatible with their DNS setup.                   |
+| **Multi-Subdomain Websites**                            | ✅ **Yes (with config.)** | Works well, but check for restrictive CORS/CSP policies. Protect critical subdomains to prevent origin IP exposure. |
+| **Sites with Real-Time Features (WebSockets)**          | ❌ **No (Experimental)**  | Support is highly experimental and unstable. Functionality is not guaranteed during the Early Access phase.         |
+| **DRM-Protected Video/Media** (e.g., Netflix clones)    | ❌ **No**                 | Our proxy can interfere with the secure Digital Rights Management (DRM) path required for protected content.        |
 
 ---
 
@@ -48,20 +41,18 @@ Kyvic is designed to be a universal layer of protection, but its CNAME-based met
 
 By pointing your domain to Kyvic, you get more than just a next-gen captcha. You instantly upgrade your website's infrastructure.
 
-| Feature                          | Your Benefit                                                                                        | How It Works                                                                                                                                                         |
-| :------------------------------- | :-------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Neuro-Based Captcha** 🧠       | Stops automated scrapers, spammers, and malicious bots cold.                                        | Our unique challenges require human logic that AI cannot yet replicate, filtering out non-human traffic.                                                             |
-| **DDoS Protection** 🛡️          | Your site stays online, even during an attack.                                                      | Our network automatically detects and absorbs malicious traffic floods before they ever reach your server.                                                           |
-| **Origin IP Masking** 👻         | Prevents attackers from targeting your server directly.                                             | Your server's true IP address is hidden behind our network, making it an invisible target.                                                                           |
-| **Global Edge Network** 🌍       | Fast load times for your visitors, wherever they are.                                               | Your captcha and security checks are served from a data center near your visitor, ensuring minimal latency.                                                          |
-| **Edge Caching** ⚡️              | Faster site loads and reduced server costs.                                                         | We automatically cache static content (images, CSS, JS) at the edge. We honor your `Cache-Control` headers, or default to a 5-minute cache for faster repeat visits. |
-| **Automatic SSL/TLS** 🔒         | Your site is secured with HTTPS, building visitor trust.                                            | We provision and renew a free SSL certificate for your custom domain automatically.                                                                                  |
-| **Enhanced Security Headers** 🪖 | Improved protection against common web attacks like clickjacking, without any server configuration. | We automatically add best-practice security headers to every response from your website.                                                                             |
+| Feature                            | Your Benefit                                                              | How It Works                                                                                                                            |
+| :--------------------------------- | :------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------- |
+| **Kyvic-Aegis Illusions** 🧠       | Stops automated AI traffic without frustrating your real users.           | Our unique, user-friendly challenges require human logic that current AI cannot replicate, effectively filtering out non-human traffic. |
+| **Essential DDoS Protection** 🛡️  | Your site stays online, even during a high-volume attack.                 | Our network automatically detects and absorbs large-scale traffic floods (L3/4 attacks) before they ever reach your server.             |
+| **Intelligent Traffic Control** 🚦 | Protects your server from being overwhelmed by suspicious activity.       | Our system automatically identifies and throttles (rate-limits) suspicious traffic patterns, providing an extra layer of defense.       |
+| **Web Security Headers** 🪖        | Hardens your site against common browser-based attacks like clickjacking. | We automatically add best-practice security headers (like HSTS and X-Frame-Options) to every response from your website.                |
+| **Automatic SSL Certificates** 🔒  | Your site is secured with HTTPS, building visitor trust.                  | We automatically provision and renew a free, trusted SSL certificate for your custom domain. No configuration is needed.                |
+| **Global Edge Network** 🌍         | A fast and reliable experience for your visitors, wherever they are.      | Your security checks and content are served from a data center near your visitor, ensuring minimal latency.                             |
+| **Basic Traffic Analytics** 📊     | Understand your site's traffic patterns at a glance.                      | A simple dashboard shows you the volume of requests your site receives, helping you monitor for traffic spikes and trends.              |
 
 <Note>
   **Note on DDoS Protection:**
 
-  Our reverse‑proxy infrastructure provides built‑in, always‑on mitigation for network and transport‑layer DDoS attacks (L3/4), including large-scale volumetric floods. This foundational protection helps keep your site online under high‑traffic conditions.
-
-  All traffic, whether benign, anomalous, or malicious, that passes through our network is counted toward your usage plan. For advanced application‑layer (L7) threats, such as automated HTTP flood attacks or stealthy bot traffic, we recommend a layered security approach. Protect your origin with your own WAF, and be sure to whitelist our IP ranges so that legitimate proxy traffic reaches your origin reliably.
+  Our infrastructure provides built-in protection against large-scale network floods (L3/4 DDoS). For more sophisticated application-layer (L7) attacks, we recommend a layered defense using your own origin firewall (WAF), just be sure to whitelist our IP ranges. Please note that all traffic we process is counted towards your usage. See our Quickstart Guide for configuration details.
 </Note>
