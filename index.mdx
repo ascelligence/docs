@@ -24,16 +24,22 @@ Our service is ideal for websites operating on a **single domain** (e.g., `www.e
 
 For maximum security, we strongly recommend protecting any critical subdomains with Kyvic as well. This creates a comprehensive shield and prevents **origin IP/hostname exposure**, making it significantly harder for attackers to target your server directly.
 
-| Platform / Website Type                                 | Supported?               | Reason / Notes                                                                                                      |
-| :------------------------------------------------------ | :----------------------- | :------------------------------------------------------------------------------------------------------------------ |
-| **Self-Hosted Websites** (WordPress, Joomla, etc.)      | ✅ **Yes**                | You have full DNS control to point your domain to Kyvic.                                                            |
-| **Cloud & VPS Hosting** (AWS, DigitalOcean, Vultr)      | ✅ **Yes**                | Ideal use case. You have complete control over your domain and server infrastructure.                               |
-| **Developer Platforms** (Vercel, Netlify, Render)       | ✅ **Yes**                | These platforms are designed for custom domain control and work seamlessly.                                         |
-| **Managed Website Builders** (Wix, Squarespace)         | ✅ **Yes**                | Works on paid plans that allow custom domain CNAME records, bypassing platform restrictions.                        |
-| **Managed E-commerce Platforms** (Shopify, BigCommerce) | ✅ **Yes**                | Requires a plan that supports custom domains. Our proxy is fully compatible with their DNS setup.                   |
-| **Multi-Subdomain Websites**                            | ✅ **Yes (with config.)** | Works well, but check for restrictive CORS/CSP policies. Protect critical subdomains to prevent origin IP exposure. |
-| **Sites with Real-Time Features (WebSockets)**          | ❌ **No (Experimental)**  | Support is highly experimental and unstable. Functionality is not guaranteed during the Early Access phase.         |
-| **DRM-Protected Video/Media** (e.g., Netflix clones)    | ❌ **No**                 | Our proxy can interfere with the secure Digital Rights Management (DRM) path required for protected content.        |
+| Platform / Website Type                                   | Supported?               | Reason / Notes                                                                                                      |
+| :-------------------------------------------------------- | :----------------------- | :------------------------------------------------------------------------------------------------------------------ |
+| **Self-Hosted Websites** (e.g, WordPress, Joomla)         | ✅ **Yes**                | You have full DNS control to point your domain to Kyvic.                                                            |
+| **Cloud & VPS Hosting** (e.g, AWS, DigitalOcean, Hetzner) | ✅ **Yes**                | Ideal use case. You have complete control over your domain and server infrastructure.                               |
+| **Managed Blogs** (e.g, Wordpress.com)                    | ✅ **Yes\***              | Our specific setup guide for managed platforms is required.                                                         |
+| **Managed Website Builders** (e.g, Squarespace)           | ✅ **Yes\***              | Our specific setup guide for managed platforms is required.                                                         |
+| **Managed E-commerce Platforms** (e.g, Shopify)           | ✅ **Yes\***              | Our specific setup guide for managed platforms is required.                                                         |
+| **Multi-Subdomain Websites**                              | ✅ **Yes (with config.)** | Works well, but check for restrictive CORS/CSP policies. Protect critical subdomains to prevent origin IP exposure. |
+| **Sites with Real-Time Features (WebSockets)**            | ❌ **No (Experimental)**  | Support is highly experimental and unstable. Functionality is not guaranteed during the Early Access phase.         |
+| **DRM-Protected Video/Media** (e.g., Netflix clones)      | ❌ **No**                 | Our proxy can interfere with the secure Digital Rights Management (DRM) path required for protected content.        |
+
+<Note>
+  **A Note on Managed Platforms (Shopify, Wix, etc.)**
+
+  With managed platforms, you don’t have direct control over firewalls like you would with self-hosted servers. That’s why we use the “secret subdomain” method as the main way to protect against bypass attempts (see our _Quickstart Guide for Managed Platforms_). Keep in mind that this setup depends on the platform’s rules, which can change, but Kyvic will work with you to keep everything running smoothly.
+</Note>
 
 ---
 
