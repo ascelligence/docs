@@ -1,0 +1,70 @@
+---
+title: "Quickstart Guide for Managed Platforms (Shopify, Wordpress.com, etc.)"
+description: "Ready to secure your site? 🛡️ This guide makes it easy, getting you fully protected in less than 10 minutes."
+---
+
+<Steps>
+  <Step title="Step 1: Generate a Secret Subdomain" titleSize="h2">
+    To hide your true origin on your managed platform, you first need to create a secret, unguessable subdomain.
+
+    1. **Generate a Random String:** Use a secure tool to generate a random hex string (e.g., from an online UUID4 generator like `uuidgenerator.net`). Example: `a7c3f1b9d4e84f5a8c7b6e2d1f0a9b3c`.
+    2. **Form Your Secret Subdomain:** Combine the random string with your domain. Example: `a7c3f1b9d4e84f5a8c7b6e2d1f0a9b3c.example.com`.
+  </Step>
+  <Step title="Step 2: Connect Your Platform to the Secret Subdomain" titleSize="h2">
+    Log in to your managed platform (e.g., Shopify) and follow their instructions to connect a custom domain. When they ask for DNS settings, use your **secret subdomain **created during Step 1.
+
+    1. In your DNS provider, create a new `CNAME` record.
+    2. Set the **Host/Name** to your random string (e.g., `a7c3f1b9d4e84f5a8c7b6e2d1f0a9b3c`).
+    3. Set the **Value/Target** to the hostname your platform provides (e.g., `shops.myshopify.com`).
+    4. Go back to your platform's dashboard and wait for them to **verify the connection**. This is a crucial step.
+  </Step>
+  <Step title="Step 3: Add Your Main Domain to Kyvic" titleSize="h2">
+    In your **Kyvic Console**, go to **Services → Aegis → Protected Domains**, then add your main, public-facing domain (for example, `www.example.com`).
+
+    When adding your domain, you'll need to tell Kyvic where your website is hosted. For the **origin hostname**, enter your **full secret subdomain** from Step 1 (e.g., `a7c3f1b9d4e84f5a8c7b6e2d1f0a9b3c.example.com`).
+
+    Our platform will then provide you with the necessary DNS records for the next steps.
+  </Step>
+  <Step title="Step 4: Point Your Main Domain to Kyvic" titleSize="h2">
+    Point your main domain to the Kyvic Aegis network. Log in to your domain registrar or DNS provider (e.g., Cloudflare, GoDaddy, Namecheap) to make these changes.
+
+    <Accordion title="Option A: For Subdomains (Recommended)" defaultOpen="false" icon="globe">
+      This is the most common setup, used for domains like `www.example.com`.
+
+      1. Find or add a DNS record for your subdomain (e.g., `www`).
+      2. Change its type to `CNAME`.
+      3. Set the value (or "target") to: `aegis.kyvic.com`
+
+      <Warning>
+        If you’re using a service like Cloudflare for your DNS, ensure that the proxy status is set to “DNS Only” (grey cloud). This ensures optimal performance for your site.
+      </Warning>
+    </Accordion>
+    <Accordion title="Option B: For Apex/Root Domains" icon="globe-pointer">
+      This is for your "bare" domain, like `example.com`**(without the "www")**
+
+      - **If your provider supports CNAME Flattening:** Some providers, like Cloudflare, allow you to set a `CNAME` record on your root domain. If so, follow the same steps as **Option A** for your root (`@`) record.
+      - **If your provider does NOT support CNAME Flattening:** This is very common. The industry-standard solution is to set up a simple redirect.
+        1. Set up Kyvic for your `www` subdomain as described in **Option A**.
+        2. Create a rule in your registrar to **redirect** all traffic from the root domain (`example.com`) to your protected subdomain (`www.example.com`).
+    </Accordion>
+  </Step>
+  <Step title="Step 5: Activate Your SSL Certificate" titleSize="h2">
+    To keep your site secure with HTTPS, we need to verify your domain ownership.
+
+    1. In your Kyvic Console, navigate through **Services → Aegis → Protected Domains → DNS Configuration**. On the **DNS Configuration** tab, you should see one or two TXT records with names such as `_acme-challenge`.
+    2. Copy these TXT records and add them to your DNS provider. This is a **one-time verification step** to confirm ownership of your domain.
+    3. Once you’ve added the records, our system will automatically detect them and issue a **free SSL certificate** for your domain. The certificate is **fully managed**, so you don’t need to worry about renewals or expiration.
+  </Step>
+  <Step title="Step 6: Verifying Your Setup" stepNumber={5} titleSize="h2">
+    Once DNS propagation is complete, a **"Protected"** badge will appear next to your domain, showing that your site is now safeguarded against harmful bots and AI scrapers.
+
+    <Info>
+      Although the process can take up to 48 hours, it typically completes within a few minutes to a couple of hours.
+    </Info>
+  </Step>
+  <Step title="That's it! Your are all set!" icon="party-horn" titleSize="h2">
+    <Check>
+      🥳 Congratulations, your website is now protected by Kyvic Aegis.
+    </Check>
+  </Step>
+</Steps>
