@@ -28,7 +28,7 @@ description: "🛡️ Follow these steps to protect your self-hosted website or 
     <Accordion title="Option B: For Apex/Root Domains" icon="globe-pointer">
       This is for your "bare" domain, like `example.com`**(without the "www")**
 
-      - **If your provider supports CNAME Flattening:** Some providers, like Cloudflare, allow you to set a `CNAME` record on your root domain. If so, follow the same steps as \*\*Option A \*\*for your root (`@`) record.
+      - **If your provider supports CNAME Flattening:** Some providers, like Cloudflare, allow you to set a `CNAME` record on your root domain. If so, follow the same steps as **Option A** for your root (`@`) record.
       - **If your provider does NOT support CNAME Flattening:** This is very common. The industry-standard solution is to set up a simple redirect.
         1. Set up Kyvic for your `www` subdomain as described in **Option A**.
         2. Create a rule in your registrar to **redirect** all traffic from the root domain (`example.com`) to your protected subdomain (`www.example.com`).
@@ -49,7 +49,7 @@ description: "🛡️ Follow these steps to protect your self-hosted website or 
     3. **Create an "Allow" Rule:** Add a rule to your WAF that **allows** any traffic coming from the Cloudflare IP Set. This rule should have the highest priority (e.g., run first).
     4. **Block all other traffic** to your web ports (80/443) to ensure your server can only be reached through Kyvic.
   </Step>
-  <Step title="Step 4 (Recommended): Use Relative Paths for All Internal Resources" stepNumber={5} titleSize="h2">
+  <Step title="Step 5 (Recommended): Use Relative Paths for All Internal Resources" stepNumber={5} titleSize="h2">
     For the best compatibility, we **strongly recommend** using **relative paths** for all your resources, including links, images, stylesheets, scripts, and API calls.
 
     While our proxy is designed to handle absolute paths (those with your full domain), the process isn't perfect. Using them can cause assets to break when proxied through our service. To ensure everything loads correctly, please make sure all paths to your own resources start with a `/`.
@@ -89,7 +89,7 @@ description: "🛡️ Follow these steps to protect your self-hosted website or 
 
 ---
 
-## Advanced Guides & Edge Cases
+## Edge Cases
 
 Most users won't need this section, but it's here for more complex setups.
 
