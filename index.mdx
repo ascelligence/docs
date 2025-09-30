@@ -26,22 +26,34 @@ For maximum security, we strongly recommend protecting any critical subdomains w
 
 | Platform / Website Type                                              | Supported?               | Reason / Notes                                                                                               |
 | :------------------------------------------------------------------- | :----------------------- | :----------------------------------------------------------------------------------------------------------- |
-| **Self-Hosted Websites **(e.g., WordPress, Joomla, Drupal)           | ✅ **Yes**                | You have full DNS control to point your domain to Kyvic.                                                     |
+| **Self-Hosted Websites** (e.g., WordPress, Joomla, Drupal)           | ✅ **Yes**                | You have full DNS control to point your domain to Kyvic.                                                     |
 | **Cloud & VPS Hosting** (e.g., AWS, DigitalOcean, Linode, Hetzner)   | ✅ **Yes**                | Ideal use case. You have complete control over your domain and server infrastructure.                        |
 | **Managed Blogs & CMS** (e.g., WordPress.com, Blogger, Medium)       | ✅ **Yes\***              | Our specific setup guide for managed platforms is required.                                                  |
 | **Managed Website Builders** (e.g., Webflow, Squarespace)            | ✅ **Yes\***              | Our specific setup guide for managed platforms is required.                                                  |
 | **Managed E-commerce** (e.g., Shopify, BigCommerce, WooCommerce.com) | **⚠️ Partial Support\*** | Our specific setup guide for managed platforms is required.                                                  |
-| **Real-Time Apps **(WebSockets, chat apps, live streaming)           | ❌ **No (Experimental)**  | Support is highly experimental and unstable. Functionality is not guaranteed during the Early Access phase.  |
+| **Real-Time Apps** (WebSockets, chat apps, live streaming)           | ❌ **No (Experimental)**  | Support is highly experimental and unstable. Functionality is not guaranteed during the Early Access phase.  |
 | **DRM-Protected Video/Media** (e.g., Netflix clones)                 | ❌ **No**                 | Our proxy can interfere with the secure Digital Rights Management (DRM) path required for protected content. |
 
 <Note>
-  **A Note on Managed Platforms (Shopify, WordPress.com, etc.)**
+  **An Important Note on Managed Platforms (WordPress.com, Shopify, etc.)**
 
-  Here's the thing about managed platforms: you don't get the same firewall control you'd have with a self-hosted server. That's why we lean on the "secret subdomain" method as your main defense against bypass attempts (check out our Quickstart Guide for Managed Platforms for details).
+  Managed platforms don't offer the same firewall control as self-hosted servers. That's why we currently use the "secret subdomain" method to obfuscate your origin (see our Quickstart Guide for Managed Platforms).
 
-  Now, this approach plays by the platform's rules, and those rules can shift over time, so your mileage may vary. Generally speaking, static-content platforms like [WordPress.com](http://WordPress.com), Blogger, GitHub Pages, or Netlify tend to play nicely with this setup.
+  <br />
 
-  Dynamic platforms like Shopify? They're a bit trickier. Since the platform controls so much of how your site works, there's less predictability. Some dynamic platforms will work great, while others... not so much. It really depends on the specific platform.
+  **The reality:** Your secret subdomain can leak through SSL certificate transparency logs, search engines, or historical DNS records. If discovered, attackers can bypass Kyvic by accessing it directly.
+
+  <br />
+
+  **Why it still matters:** This approach stops automated scrapers and casual attackers who aren't actively hunting for origins. It's not foolproof, but it raises the barrier significantly—most bots and bad actors won't invest the effort to search certificate logs or DNS history.
+
+  <br />
+
+  **Platform reliability varies:** static platforms (WordPress.com, Blogger, GitHub Pages, Netlify) tend to work well, while dynamic platforms like Shopify are less predictable.
+
+  <br />
+
+  **Looking ahead:** We're actively researching more robust protection methods for managed platforms that don't rely on origin obscurity. For now, this provides meaningful protection for most scenarios. Facing sophisticated, targeted attacks? Self-hosted solutions offer the strongest security controls.
 </Note>
 
 ---
