@@ -4,6 +4,13 @@ description: "Get quick answers to common questions about our proxy service, sec
 ---
 
 <AccordionGroup>
+  <Accordion title="How do you know your challenges work against AI?">
+    We've tested our challenges extensively against leading AI vision models, including GPT-5, Claude Sonnet 4, and Gemini 2.5 Pro. In our testing (conducted September 2025), these models achieved less than 1% accuracy and frequently hallucinated or timed out entirely.
+
+    However, AI capabilities evolve quickly. We continuously test against new model releases and update our challenges when needed. Our time-based verification system provides an additional layer of security, even if an advanced AI bot occasionally succeeds, it will be caught at the next checkpoint.
+
+    We're transparent about this: no challenge is permanently unbreakable. Our goal is to stay ahead of automated systems while keeping the experience seamless for human visitors.
+  </Accordion>
   <Accordion title="Will Kyvic slow down my website?">
     No. Our security checks run on a highly optimized global edge network. For most users, the difference in latency is negligible and often imperceptible. We strongly recommend using the "DNS Only" setting for your CNAME record to ensure the fastest possible connection.
   </Accordion>
